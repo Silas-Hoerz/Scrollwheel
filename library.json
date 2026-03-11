@@ -1,0 +1,27 @@
+{
+    "name": "Scrollwheel",
+    "version": "1.0.0",
+    "description": "A library to read capacitive radial slider and button data from the CY8CMBR3106S.",
+    "keywords": [
+        "touch",
+        "capacitive",
+        "slider",
+        "scrollwheel",
+        "cy8cmbr3106s",
+        "i2c",
+        "sensor"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Silas-Hoerz/Scrollwheel.git"
+    },
+    "authors": [
+        {
+            "name": "Silas Hörz",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
