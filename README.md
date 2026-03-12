@@ -102,43 +102,69 @@ Getting raw angles from a capacitive sensor is easy. Making it feel like a premi
 
 ### 1. The Jitter-Latency Dilemma
 **The Problem:** Capacitive sensors inherent electrical noise. A standard low-pass filter eliminates this jitter, but introduces noticeable lag when moving your finger quickly.
+
 **The Solution:** The 1-Euro Filter (Adaptive Low-Pass).
 
 It dynamically adjusts its cutoff frequency based on the speed of movement. When moving slowly, the filter is strong (eliminating noise). When moving quickly, the filter opens up entirely, dropping latency to zero. 
+
 The filter uses exponential smoothing:
-$$\hat{X}_i = \alpha X_i + (1 - \alpha) \hat{X}_{i-1}$$
-The smoothing factor $\alpha$ is derived from a dynamic cutoff frequency $f_c$, which scales with velocity $|\dot{\hat{X}}_i|$:
-$$f_c = f_{c_{min}} + \beta |\dot{\hat{X}}_i|$$
+
+$$
+\hat{X}_i = \alpha X_i + (1 - \alpha) \hat{X}_{i-1}
+$$
+
+The smoothing factor $`\alpha`$ is derived from a dynamic cutoff frequency $`f_c`$, which scales with velocity $`|\dot{\hat{X}}_i|`$:
+
+$$
+f_c = f_{c_{min}} + \beta |\dot{\hat{X}}_i|
+$$
 
 ### 2. The Derivative Explosion
 **The Problem:** To calculate UI momentum, we need angular velocity. Calculating simple differences over tiny time steps causes the velocity value to spike randomly due to sensor noise.
+
 **The Solution:** Linear Regression (Savitzky-Golay principle).
+
 Instead of looking at just the last two points, we take a rolling window of the last 5 points and calculate the slope of the line of best fit. This yields a silky-smooth velocity reading unaffected by single-point anomalies. We solve the overdetermined system using least squares:
-$$m, c = \text{argmin}_{m,c} \sum (y_i - (m \cdot x_i + c))^2$$
+
+$$
+m, c = \text{argmin}_{m,c} \sum (y_i - (m \cdot x_i + c))^2
+$$
 
 ### 3. Kinetic Momentum (Flicking)
 **The Problem:** When you release the wheel after spinning it fast, the UI should not stop abruptly, nor should it scroll forever. It needs simulated friction.
+
 **The Solution:** Exponential Decay.
 
 
-[Image of exponential decay function graph]
+![exponential decay](images/exponential_decay.png)
 
-Upon release, the algorithm captures the exit velocity $v_0$. The virtual list continues to move, but its velocity decays exponentially over time based on a tunable friction constant $\tau$:
-$$v(t) = v_0 \cdot e^{-t / \tau}$$
+
+Upon release, the algorithm captures the exit velocity $`v_0`$. The virtual list continues to move, but its velocity decays exponentially over time based on a tunable friction constant $`\tau`$:
+
+$$
+v(t) = v_0 \cdot e^{-t / \tau}
+$$
 
 ### 4. Hard Stops (Rubber-Banding)
 **The Problem:** Reaching the end of a virtual list shouldn't feel like hitting a brick wall. 
+
 **The Solution:** Hooke's Law.
 
 
-[Image of Hooke's law spring physics]
+![Hooke's law spring physics](images/hookes_law.png)
 
-We allow the virtual scroll position to shoot past the 0 or maximum index. Once out of bounds, a virtual spring pulls the list back to the edge. The restoring force $F$ is proportional to the distance $x$ it traveled out of bounds:
-$$F = -k \cdot x$$
+
+We allow the virtual scroll position to shoot past the 0 or maximum index. Once out of bounds, a virtual spring pulls the list back to the edge. The restoring force $`F`$ is proportional to the distance $`x`$ it traveled out of bounds:
+
+$$
+F = -k \cdot x
+$$
 
 ### 5. The Wrap-Around Problem
 **The Problem:** The hardware outputs absolute angles from 0 to 359 degrees. Crossing the 12 o'clock mark causes a massive jump between 359 and 0, which would launch the UI wildly.
+
 **The Solution:** Circular Difference Accumulation.
+
 By comparing the current frame to the last frame, we only look at the delta. If the delta is physically impossible for one frame (e.g., > 180 degrees), we know a boundary was crossed and mathematically correct it before adding it to an infinite continuous counter.
 
 ---
