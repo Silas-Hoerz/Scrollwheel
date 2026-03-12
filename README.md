@@ -8,7 +8,8 @@ I built this project to bring professional, smooth, and latency-free rotational 
 
 The board is designed to be compact and easy to integrate into custom panels. It connects via a standard 6-pin JST-SH (1.0mm pitch) connector.
 
-![Scrollwheel PCB](images/pcb.jpg)
+![Scrollwheel PCB Back](images/back.jpg)
+![Scrollwheel PCB Front](images/front.jpg)
 
 ![Scrollwheel Schematic](images/schematic.jpg)
 
