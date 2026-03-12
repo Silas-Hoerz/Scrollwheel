@@ -76,7 +76,7 @@ Unlike the Arduino IDE, PlatformIO requires a dedicated main.cpp file to compile
 
 6. Build and upload the project using the PlatformIO toolbar.
 
-## Web Telemetry Demo
+## Web Demo
 
 This repository includes a standalone, browser-based UI to visually test the Scrollwheel in real-time. It uses the modern Web Serial API, meaning **no additional software or drivers** are required. 
 
