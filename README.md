@@ -13,6 +13,8 @@ The board is designed to be compact and easy to integrate into custom panels. It
 
 ![Scrollwheel Schematic](images/schematic.jpg)
 
+[![Buy on Tindie](https://img.shields.io/badge/Buy_on-Tindie-0084FF?style=for-the-badge)](https://www.tindie.com/stores/kanito/?ref=offsite_badges&utm_source=sellers_Kanito&utm_medium=badges&utm_campaign=badge_small)
+
 ### Example Wiring (Arduino Uno / Nano)
 
 To quickly test the Scrollwheel with a standard Arduino Uno or Nano, wire the JST-SH connector as follows:
@@ -171,3 +173,18 @@ By comparing the current frame to the last frame, we only look at the delta. If 
 
 ## License
 This project is licensed under the MIT License. Feel free to use the hardware design and software in your own projects.
+
+## Important Legal Notice & Disclaimer
+For Professional and Educational Use Only
+
+This product is an electronic component / evaluation board intended solely for development, prototyping, and educational purposes. It is NOT a finished consumer product.
+
+Operation: It is designed to be integrated into larger systems by qualified personnel or electronics enthusiasts.
+
+Compliance: As a sub-component, it has not undergone specific CE, FCC, or similar certification testing. The integrator (you) is responsible for ensuring the compliance of the final device.
+
+Safety: This board operates at low voltage (max 5.5V). However, improper wiring or use can damage the sensor or connected hardware.
+
+WEEE/EAR: In accordance with European regulations (ElektroG), this item is classified as a "component" and therefore does not fall under the registration requirements for finished electrical devices.
+
+By purchasing or using this hardware, you acknowledge that you have the technical knowledge to handle electronic components safely.
