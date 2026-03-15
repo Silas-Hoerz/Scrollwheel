@@ -1,7 +1,5 @@
 # Scrollwheel (CY8CMBR3106S)
 
-[![Buy on Tindie](https://img.shields.io/badge/Buy_on-Tindie-0084FF?style=for-the-badge)](https://www.tindie.com/stores/kanito/?ref=offsite_badges&utm_source=sellers_Kanito&utm_medium=badges&utm_campaign=badge_small)
-
 A custom-designed, highly responsive capacitive radial slider PCB based on the Cypress CY8CMBR3106S touch controller. 
 
 I built this project to bring professional, smooth, and latency-free rotational input to custom hardware interfaces. While the hardware provides solid raw data through a 5-segment slider and a central touch button, the real magic happens in the software. This repository contains both the hardware documentation and a robust C++ library to read and process the sensor data.
