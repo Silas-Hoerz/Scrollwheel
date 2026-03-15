@@ -187,4 +187,6 @@ Safety: This board operates at low voltage (max 5.5V). However, improper wiring 
 
 WEEE/EAR: In accordance with European regulations (ElektroG), this item is classified as a "component" and therefore does not fall under the registration requirements for finished electrical devices.
 
-By purchasing or using this hardware, you acknowledge that you have the technical knowledge to handle electronic components safely.
+By purchasing or using this hardware, you acknowledge that you have the technical knowledge to handle electronic components safely.By purchasing or using this hardware, you acknowledge that you have the technical knowledge to handle electronic components safely.
+=======
+>>>>>>> 079f89983daf2b791ce2e3e206fea7e30d04a73d
